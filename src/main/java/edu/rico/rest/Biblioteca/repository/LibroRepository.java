@@ -1,6 +1,10 @@
 package edu.rico.rest.Biblioteca.repository;
 
+import edu.rico.rest.Biblioteca.model.Isbn;
 import edu.rico.rest.Biblioteca.model.Libro;
+
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +19,5 @@ import org.springframework.stereotype.Repository;
 public interface LibroRepository extends JpaRepository<Libro, Long> {
     // Aquí podríamos añadir métodos personalizados si los necesitáramos,
     // por ejemplo:
-    // Optional<Libro> findByIsbn(Isbn isbn);
+    Optional<Libro> findByIsbn(Isbn isbn);
 }

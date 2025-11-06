@@ -26,7 +26,11 @@ public class LibroServiceImpl implements ILibroService {
     @Transactional
     public Libro crearLibro(LibroDTO dto) {
         try {
-            Libro libro = libroMapper.toEntity(dto);
+            Libro libro = libroMapper.toEntity(dto);            // Validar que el ISBN no exista ya
+            if (libroRepository.findByIsbn(libro.getIsbn()).isPresent()) {
+                throw new IllegalArgumentException("Ya existe un libro con el ISBN: " + dto.isbn());
+            }
+
             return libroRepository.save(libro);
         } catch (IllegalArgumentException e) {
             throw new RuntimeException("Datos del libro inválidos: " + e.getMessage(), e);
