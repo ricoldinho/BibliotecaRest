@@ -1,0 +1,127 @@
+-- Borramos la tabla si existe para empezar de cero (ya que usamos create-drop)
+DROP TABLE IF EXISTS libros;
+
+-- Hibernate crea la tabla, pero por si acaso la definimos (esto es opcional si ddl-auto está activo)
+CREATE TABLE IF NOT EXISTS libros (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    autor VARCHAR(100) NOT NULL,
+    isbn VARCHAR(20) NOT NULL UNIQUE,
+    precio DECIMAL(19, 2) NOT NULL,
+    moneda VARCHAR(3) NOT NULL,
+    editorial VARCHAR(100),
+    fecha_lanzamiento DATE,
+    INDEX(autor),
+    INDEX(titulo)
+);
+
+-- Vaciamos la tabla antes de insertar para evitar duplicados si reiniciamos
+TRUNCATE TABLE libros;
+
+-- Insertamos 100 libros
+INSERT INTO libros (titulo, autor, isbn, precio, moneda, editorial, fecha_lanzamiento) VALUES
+-- Clásicos Fundamentales
+('Don Quijote de la Mancha', 'Miguel de Cervantes', '9788420412146', 24.95, 'EUR', 'Alfaguara', '1605-01-16'),
+('Cien Años de Soledad', 'Gabriel García Márquez', '9780307474728', 21.50, 'EUR', 'Sudamericana', '1967-05-30'),
+('1984', 'George Orwell', '9780451524935', 15.99, 'USD', 'Signet Classics', '1949-06-08'),
+('Un mundo feliz', 'Aldous Huxley', '9780060850524', 14.50, 'USD', 'Harper Perennial', '1932-01-01'),
+('Orgullo y Prejuicio', 'Jane Austen', '9780141439518', 12.99, 'EUR', 'Penguin Clásicos', '1813-01-28'),
+('Matar un ruiseñor', 'Harper Lee', '9780061120084', 16.99, 'USD', 'HarperCollins', '1960-07-11'),
+('El Gran Gatsby', 'F. Scott Fitzgerald', '9780743273565', 14.00, 'USD', 'Scribner', '1925-04-10'),
+('Moby Dick', 'Herman Melville', '9780142437247', 18.50, 'USD', 'Penguin Classics', '1851-10-18'),
+('Guerra y Paz', 'León Tolstói', '9780140447934', 29.99, 'EUR', 'Penguin Classics', '1869-01-01'),
+('Crimen y Castigo', 'Fyodor Dostoevsky', '9780140449136', 17.90, 'EUR', 'Penguin Classics', '1866-01-01'),
+('La Odisea', 'Homero', '9780140268867', 15.00, 'EUR', 'Penguin Clásicos', '1800-01-01'), -- Fecha aproximada
+('Hamlet', 'William Shakespeare', '9780743477123', 9.99, 'USD', 'Simon & Schuster', '1603-01-01'),
+('El Principito', 'Antoine de Saint-Exupéry', '9780156012195', 13.50, 'EUR', 'Salamandra', '1943-04-01'),
+('Lolita', 'Vladimir Nabokov', '9780679723165', 16.00, 'USD', 'Vintage', '1955-09-15'),
+('Ulises', 'James Joyce', '9780679722762', 22.00, 'USD', 'Vintage', '1922-02-02'),
+('En Busca del Tiempo Perdido', 'Marcel Proust', '9780142437964', 35.00, 'EUR', 'Penguin Classics', '1913-01-01'),
+('El Extranjero', 'Albert Camus', '9780679720218', 14.99, 'USD', 'Vintage', '1942-01-01'),
+('El Proceso', 'Franz Kafka', '9780805210400', 15.50, 'EUR', 'Schocken', '1925-01-01'),
+('Las uvas de la ira', 'John Steinbeck', '9780143039433', 17.00, 'USD', 'Penguin Classics', '1939-04-14'),
+('El guardián entre el centeno', 'J.D. Salinger', '9780316769488', 13.99, 'USD', 'Little, Brown', '1951-07-16'),
+
+-- Fantasía y Ciencia Ficción
+('El Señor de los Anillos: La Comunidad del Anillo', 'J.R.R. Tolkien', '9780618640157', 22.99, 'EUR', 'Minotauro', '1954-07-29'),
+('El Hobbit', 'J.R.R. Tolkien', '9780618260300', 18.99, 'EUR', 'Minotauro', '1937-09-21'),
+('Dune', 'Frank Herbert', '9780441172719', 19.95, 'USD', 'Ace Books', '1965-08-01'),
+('Fundación', 'Isaac Asimov', '9780553293357', 16.50, 'USD', 'Bantam Spectra', '1951-01-01'),
+('Juego de Tronos', 'George R.R. Martin', '9780553588484', 24.00, 'EUR', 'Gigamesh', '1996-08-01'),
+('Harry Potter y la piedra filosofal', 'J.K. Rowling', '9788478884452', 20.00, 'EUR', 'Salamandra', '1997-06-26'),
+('El nombre del viento', 'Patrick Rothfuss', '9788401337206', 23.50, 'EUR', 'Plaza & Janés', '2007-03-27'),
+('Crónicas Marcianas', 'Ray Bradbury', '9780743277563', 15.00, 'USD', 'Simon & Schuster', '1950-05-04'),
+('¿Sueñan los androides con ovejas eléctricas?', 'Philip K. Dick', '9780345404473', 14.99, 'USD', 'Del Rey', '1968-01-01'),
+('Neuromante', 'William Gibson', '9780441569595', 16.99, 'USD', 'Ace Books', '1984-07-01'),
+('El fin de la eternidad', 'Isaac Asimov', '9780553293358', 18.20, 'EUR', 'Debolsillo', '1955-01-01'),
+('Fahrenheit 451', 'Ray Bradbury', '9781451673319', 14.99, 'USD', 'Simon & Schuster', '1953-10-19'),
+('El Silmarillion', 'J.R.R. Tolkien', '9780618391110', 20.50, 'EUR', 'Minotauro', '1977-09-15'),
+('La Rueda del Tiempo: El Ojo del Mundo', 'Robert Jordan', '9780812511819', 25.99, 'EUR', 'Timun Mas', '1990-01-15'),
+('Hyperion', 'Dan Simmons', '9780553283686', 17.80, 'USD', 'Bantam Spectra', '1989-05-26'),
+('El color de la magia', 'Terry Pratchett', '9780062225672', 13.99, 'EUR', 'Debolsillo', '1983-11-24'),
+('La mano izquierda de la oscuridad', 'Ursula K. Le Guin', '9780441478125', 16.00, 'USD', 'Ace Books', '1969-03-01'),
+('2001: Una odisea espacial', 'Arthur C. Clarke', '9780451457998', 15.50, 'USD', 'Roc', '1968-04-01'),
+('Frankenstein', 'Mary Shelley', '9780486282114', 10.99, 'EUR', 'Dover Thrift', '1818-01-01'),
+('Drácula', 'Bram Stoker', '9780486411095', 11.99, 'EUR', 'Dover Thrift', '1897-05-26'),
+
+-- Bestsellers Modernos y Contemporáneos
+('Reina Roja', 'Juan Gómez-Jurado', '9788466664417', 21.90, 'EUR', 'Ediciones B', '2018-11-08'),
+('La Sombra del Viento', 'Carlos Ruiz Zafón', '9780143126393', 19.95, 'EUR', 'Planeta', '2001-01-01'),
+('El Código Da Vinci', 'Dan Brown', '9780307474278', 18.00, 'USD', 'Anchor', '2003-03-18'),
+('Sapiens: De animales a dioses', 'Yuval Noah Harari', '9780062316097', 25.99, 'USD', 'Harper', '2015-02-10'),
+('Hábitos Atómicos', 'James Clear', '9780735211292', 24.00, 'USD', 'Avery', '2018-10-16'),
+('Perdida (Gone Girl)', 'Gillian Flynn', '9780307588371', 17.00, 'USD', 'Crown', '2012-06-05'),
+('La chica del tren', 'Paula Hawkins', '9781594634024', 16.99, 'EUR', 'Planeta', '2015-01-13'),
+('Los pilares de la Tierra', 'Ken Follett', '9780451419575', 28.00, 'EUR', 'Plaza & Janés', '1989-01-01'),
+('Patria', 'Fernando Aramburu', '9788490663196', 22.90, 'EUR', 'Tusquets', '2016-09-06'),
+('El Alquimista', 'Paulo Coelho', '9780061122415', 14.99, 'EUR', 'Planeta', '1988-01-01'),
+('Cometas en el cielo', 'Khaled Hosseini', '9781594631931', 16.00, 'USD', 'Riverhead Books', '2003-05-29'),
+('La catedral del mar', 'Ildefonso Falcones', '9788499088031', 23.45, 'EUR', 'Grijalbo', '2006-03-01'),
+('El tiempo entre costuras', 'María Dueñas', '9788499980753', 21.80, 'EUR', 'Temas de Hoy', '2009-06-09'),
+('Donde cantan los cangrejos', 'Delia Owens', '9780735219090', 18.00, 'USD', 'G.P. Putnam''s Sons', '2018-08-14'),
+('Los hombres que no amaban a las mujeres', 'Stieg Larsson', '9780307454553', 17.50, 'EUR', 'Destino', '2005-08-01'),
+('El sutil arte de que (casi) todo te importe una mi*rda', 'Mark Manson', '9780062457714', 19.99, 'USD', 'Harper', '2016-09-13'),
+('American Gods', 'Neil Gaiman', '9780380789030', 16.99, 'USD', 'HarperTorch', '2001-06-19'),
+('La carretera', 'Cormac McCarthy', '9780307387899', 15.00, 'USD', 'Vintage', '2006-09-26'),
+('Expiación', 'Ian McEwan', '9780307387158', 16.00, 'USD', 'Anchor', '2001-01-01'),
+('La vida de Pi', 'Yann Martel', '9780156027328', 15.50, 'USD', 'Mariner Books', '2001-09-11'),
+('El marciano', 'Andy Weir', '9780553418026', 15.99, 'USD', 'Crown', '2014-02-11'),
+('Todo lo que no te conté', 'Celeste Ng', '9781594206037', 16.50, 'USD', 'Penguin Press', '2014-06-26'),
+('La paciente silenciosa', 'Alex Michaelides', '9781250301697', 20.99, 'EUR', 'Alfaguara', '2019-02-05'),
+('Gente normal', 'Sally Rooney', '9781984822178', 17.00, 'USD', 'Hogarth', '2019-04-16'),
+('El Proyecto Hail Mary', 'Andy Weir', '9780593135204', 22.50, 'USD', 'Ballantine Books', '2021-05-04'),
+('Klara y el Sol', 'Kazuo Ishiguro', '9780593318171', 21.00, 'EUR', 'Anagrama', '2021-03-02'),
+('Lecciones de química', 'Bonnie Garmus', '9780385547345', 23.00, 'EUR', 'Planeta', '2022-04-05'),
+('La biblioteca de la medianoche', 'Matt Haig', '9780525559474', 19.99, 'USD', 'Viking', '2020-09-29'),
+('Circe', 'Madeline Miller', '9780316556347', 17.99, 'USD', 'Little, Brown', '2018-04-10'),
+
+-- Más Clásicos y Literatura
+('Rayuela', 'Julio Cortázar', '9788420420325', 20.50, 'EUR', 'Alfaguara', '1963-06-28'),
+('Ficciones', 'Jorge Luis Borges', '9780802130303', 14.00, 'EUR', 'Alianza', '1944-01-01'),
+('Pedro Páramo', 'Juan Rulfo', '9788437604183', 12.50, 'EUR', 'Cátedra', '1955-01-01'),
+('La casa de los espíritus', 'Isabel Allende', '9780553383804', 18.00, 'EUR', 'Plaza & Janés', '1982-01-01'),
+('Anna Karenina', 'León Tolstói', '9780143035008', 19.00, 'EUR', 'Penguin Classics', '1877-01-01'),
+('Madame Bovary', 'Gustave Flaubert', '9780140449129', 14.50, 'EUR', 'Penguin Classics', '1856-01-01'),
+('Los hermanos Karamazov', 'Fyodor Dostoevsky', '9780140449242', 21.00, 'EUR', 'Penguin Classics', '1880-01-01'),
+('Grandes Esperanzas', 'Charles Dickens', '9780141439563', 15.00, 'EUR', 'Penguin Clásicos', '1861-01-01'),
+('Cumbres Borrascosas', 'Emily Brontë', '9780141439556', 13.90, 'EUR', 'Penguin Clásicos', '1847-12-01'),
+('Jane Eyre', 'Charlotte Brontë', '9780141441146', 14.20, 'EUR', 'Penguin Clásicos', '1847-10-16'),
+('El corazón de las tinieblas', 'Joseph Conrad', '9780141441672', 11.99, 'USD', 'Penguin Classics', '1899-01-01'),
+('Por quién doblan las campanas', 'Ernest Hemingway', '9780684803357', 17.99, 'USD', 'Scribner', '1940-10-21'),
+('Al este del Edén', 'John Steinbeck', '9780140186390', 18.50, 'USD', 'Penguin Classics', '1952-09-01'),
+('En el camino', 'Jack Kerouac', '9780140283297', 16.00, 'USD', 'Penguin Classics', '1957-09-05'),
+('Matadero cinco', 'Kurt Vonnegut', '9780385333849', 15.00, 'USD', 'Dial Press', '1969-03-31'),
+('El ruido y la furia', 'William Faulkner', '9780679732242', 15.50, 'USD', 'Vintage', '1929-10-07'),
+('Meridiano de sangre', 'Cormac McCarthy', '9780679728757', 16.99, 'USD', 'Vintage', '1985-04-01'),
+
+-- No Ficción Influyente
+('El gen egoísta', 'Richard Dawkins', '9780199291151', 19.99, 'USD', 'Oxford University Press', '1976-01-01'),
+('Breve historia del tiempo', 'Stephen Hawking', '9780553380163', 18.99, 'USD', 'Bantam', '1988-04-01'),
+('Pensar rápido, pensar despacio', 'Daniel Kahneman', '9780374533557', 20.00, 'USD', 'Farrar, Straus and Giroux', '2011-10-25'),
+('El hombre en busca de sentido', 'Viktor Frankl', '9780807014271', 14.50, 'EUR', 'Herder', '1946-01-01'),
+('Cosmos', 'Carl Sagan', '9780345539434', 25.00, 'USD', 'Ballantine Books', '1980-01-01'),
+('12 Reglas para Vivir', 'Jordan B. Peterson', '9780345816023', 22.00, 'EUR', 'Planeta', '2018-01-16'),
+('Homo Deus: Breve historia del mañana', 'Yuval Noah Harari', '9780062464316', 24.99, 'USD', 'Harper', '2017-02-21'),
+('El poder del ahora', 'Eckhart Tolle', '9781577314806', 16.00, 'USD', 'New World Library', '1997-01-01'),
+('Armas, gérmenes y acero', 'Jared Diamond', '9780393317558', 19.99, 'USD', 'W. W. Norton', '1997-01-01'),
+('El cisne negro', 'Nassim Nicholas Taleb', '9780812973815', 18.50, 'USD', 'Random House', '2007-04-17');
