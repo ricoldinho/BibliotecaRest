@@ -22,8 +22,8 @@ public final class Money {
         this.currency = currency;
     }
 
-    // Constructor sin argumentos requerido por JPA
-    protected Money() {
+    // Constructor sin argumentos requerido por JPA y MapStruct
+    public Money() {
         this.amount = null;
         this.currency = null;
     }

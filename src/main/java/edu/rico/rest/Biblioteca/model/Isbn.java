@@ -20,8 +20,8 @@ public final class Isbn {
         this.value = value;
     }
 
-    // Constructor sin argumentos requerido por JPA
-    protected Isbn() {
+    // Constructor sin argumentos requerido por JPA y MapStruct
+    public Isbn() {
         this.value = null;
     }
 
