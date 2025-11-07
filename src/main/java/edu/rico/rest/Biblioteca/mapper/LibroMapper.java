@@ -4,6 +4,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
+import edu.rico.rest.Biblioteca.model.Isbn;
+import edu.rico.rest.Biblioteca.model.Money;
 import edu.rico.rest.Biblioteca.model.Libro;
 import edu.rico.rest.Biblioteca.model.dto.LibroDTO;
 

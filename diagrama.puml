@@ -1,0 +1,106 @@
+@startuml
+
+!theme vibrant
+
+' Ocultar constructores y métodos por defecto
+hide empty members
+
+' Definición de Clases y Interfaces
+package "Controller" {
+    class LibroController {
+        - libroService: ILibroService
+        - libroMapper: LibroMapper
+        + getAll(): List<LibroDTO>
+        + getById(Long): ResponseEntity<LibroDTO>
+        + create(LibroDTO, UriComponentsBuilder): ResponseEntity<LibroDTO>
+        + update(Long, LibroDTO): ResponseEntity<LibroDTO>
+        + delete(Long): void
+    }
+}
+
+package "Service" {
+    interface ILibroService {
+        + crearLibro(LibroDTO): Libro
+        + obtenerLibroPorId(Long): Optional<Libro>
+        + obtenerTodosLosLibros(): List<Libro>
+        + actualizarLibro(Long, LibroDTO): Libro
+        + borrarLibro(Long): void
+    }
+
+    class LibroServiceImpl implements ILibroService {
+        - libroRepository: LibroRepository
+        - libroMapper: LibroMapper
+        + crearLibro(LibroDTO): Libro
+        + obtenerLibroPorId(Long): Optional<Libro>
+        + obtenerTodosLosLibros(): List<Libro>
+        + actualizarLibro(Long, LibroDTO): Libro
+        + borrarLibro(Long): void
+    }
+}
+
+package "Repository" {
+    interface LibroRepository extends JpaRepository<Libro, Long> {
+        + findByIsbn(Isbn): Optional<Libro>
+    }
+}
+
+package "Mapper" {
+    interface LibroMapper {
+        + toEntity(LibroDTO): Libro
+        + toDto(Libro): LibroDTO
+        + updateLibroFromDto(LibroDTO, Libro): void
+    }
+}
+
+package "Model" {
+    class Libro {
+        - id: Long
+        - titulo: String
+        - autor: String
+        - isbn: Isbn
+        - precio: Money
+        - editorial: String
+        - fechaLanzamiento: LocalDate
+    }
+
+    class Isbn {
+        - value: String
+    }
+
+    class Money {
+        - amount: BigDecimal
+        - currency: String
+    }
+
+    record LibroDTO {
+        + titulo: String
+        + autor: String
+        + isbn: String
+        + precio: BigDecimal
+        + moneda: String
+        + editorial: String
+        + fechaLanzamiento: LocalDate
+    }
+}
+
+' Relaciones entre Clases
+LibroController ..> ILibroService
+LibroController ..> LibroMapper
+LibroServiceImpl ..> LibroRepository
+LibroServiceImpl ..> LibroMapper
+LibroMapper ..> Libro
+LibroMapper ..> LibroDTO
+LibroMapper ..> Isbn
+LibroMapper ..> Money
+
+Libro "1" *-- "1" Isbn
+Libro "1" *-- "1" Money
+
+' Relaciones de dependencia (uso)
+LibroController --> LibroDTO
+LibroServiceImpl --> Libro
+LibroServiceImpl --> LibroDTO
+LibroRepository --> Libro
+LibroRepository --> Isbn
+
+@enduml
