@@ -3,12 +3,14 @@ package edu.rico.rest.Biblioteca.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
+import org.springframework.stereotype.Component;
 
 import edu.rico.rest.Biblioteca.model.Isbn;
 import edu.rico.rest.Biblioteca.model.Money;
 import edu.rico.rest.Biblioteca.model.Libro;
 import edu.rico.rest.Biblioteca.model.dto.LibroDTO;
 
+@Component
 @Mapper(componentModel = "spring")
 public interface LibroMapper {
 
