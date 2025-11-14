@@ -1,4 +1,4 @@
-package edu.rico.rest.Biblioteca.model;
+package edu.rico.rest.Biblioteca.model.vo;
 
 import java.util.Objects;
 import java.util.regex.Pattern;

@@ -5,10 +5,10 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.springframework.stereotype.Component;
 
-import edu.rico.rest.Biblioteca.model.Isbn;
-import edu.rico.rest.Biblioteca.model.Money;
 import edu.rico.rest.Biblioteca.model.Libro;
 import edu.rico.rest.Biblioteca.model.dto.LibroDTO;
+import edu.rico.rest.Biblioteca.model.vo.Isbn;
+import edu.rico.rest.Biblioteca.model.vo.Money;
 
 @Component
 @Mapper(componentModel = "spring")

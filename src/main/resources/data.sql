@@ -104,3 +104,7 @@ INSERT INTO libros (titulo, autor, isbn, precio, moneda, editorial, fecha_lanzam
 ('El poder del ahora', 'Eckhart Tolle', '9781577314806', 16.00, 'USD', 'New World Library', '1997-01-01'),
 ('Armas, gérmenes y acero', 'Jared Diamond', '9780393317558', 19.99, 'USD', 'W. W. Norton', '1997-01-01'),
 ('El cisne negro', 'Nassim Nicholas Taleb', '9780812973815', 18.50, 'USD', 'Random House', '2007-04-17');
+
+INSERT INTO autores (nombre, apellido1, apellido2, nacionalidad) VALUES 
+("manuel", "rivas", null, "española"),
+("fernando", "trujillo", null, "española");

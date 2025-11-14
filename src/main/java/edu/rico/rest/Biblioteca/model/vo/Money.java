@@ -1,4 +1,4 @@
-package edu.rico.rest.Biblioteca.model;
+package edu.rico.rest.Biblioteca.model.vo;
 
 import java.math.BigDecimal;
 import java.util.Objects;

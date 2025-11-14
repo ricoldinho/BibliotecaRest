@@ -10,6 +10,7 @@ import edu.rico.rest.Biblioteca.mapper.LibroMapper;
 import edu.rico.rest.Biblioteca.model.Libro;
 import edu.rico.rest.Biblioteca.model.dto.LibroDTO;
 import edu.rico.rest.Biblioteca.repository.LibroRepository;
+import edu.rico.rest.Biblioteca.service.interfaces.ILibroService;
 
 @Service // Le dice a Spring que esta es una clase de Servicio
 public class LibroServiceImpl implements ILibroService {

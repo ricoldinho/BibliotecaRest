@@ -21,7 +21,7 @@ import java.net.URI;
 import edu.rico.rest.Biblioteca.mapper.LibroMapper;
 import edu.rico.rest.Biblioteca.model.Libro;
 import edu.rico.rest.Biblioteca.model.dto.LibroDTO;
-import edu.rico.rest.Biblioteca.service.ILibroService;
+import edu.rico.rest.Biblioteca.service.interfaces.ILibroService;
 
 @RestController
 @RequestMapping("/api/libros")

@@ -1,4 +1,4 @@
-package edu.rico.rest.Biblioteca.service;
+package edu.rico.rest.Biblioteca.service.interfaces;
 
 import java.util.List;
 import java.util.Optional;

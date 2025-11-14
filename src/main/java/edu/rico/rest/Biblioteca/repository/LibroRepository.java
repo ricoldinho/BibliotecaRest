@@ -1,7 +1,7 @@
 package edu.rico.rest.Biblioteca.repository;
 
-import edu.rico.rest.Biblioteca.model.Isbn;
 import edu.rico.rest.Biblioteca.model.Libro;
+import edu.rico.rest.Biblioteca.model.vo.Isbn;
 
 import java.util.Optional;
 

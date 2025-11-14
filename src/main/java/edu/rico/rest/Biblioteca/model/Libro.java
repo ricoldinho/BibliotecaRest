@@ -2,6 +2,8 @@ package edu.rico.rest.Biblioteca.model;
 
 import java.time.LocalDate;
 
+import edu.rico.rest.Biblioteca.model.vo.Isbn;
+import edu.rico.rest.Biblioteca.model.vo.Money;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.Column;
