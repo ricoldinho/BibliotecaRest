@@ -16,7 +16,7 @@ import edu.rico.rest.Biblioteca.service.interfaces.ILibroService;
 public class LibroServiceImpl implements ILibroService {
 
     private final LibroRepository libroRepository;
-    private final IILibroMapper libroMapper;
+    private final ILibroMapper libroMapper;
 
     public LibroServiceImpl(LibroRepository libroRepository, ILibroMapper libroMapper) {
         this.libroRepository = libroRepository;

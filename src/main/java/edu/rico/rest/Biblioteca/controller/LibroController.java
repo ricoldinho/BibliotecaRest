@@ -28,7 +28,7 @@ import edu.rico.rest.Biblioteca.service.interfaces.ILibroService;
 public class LibroController {
 
     private final ILibroService libroService;
-    private final IILibroMapper libroMapper;
+    private final ILibroMapper libroMapper;
 
     public LibroController(ILibroService libroService, ILibroMapper libroMapper) {
         this.libroService = libroService;
