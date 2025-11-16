@@ -18,7 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 
-import edu.rico.rest.Biblioteca.mapper.LibroMapper;
+import edu.rico.rest.Biblioteca.mapper.ILibroMapper;
 import edu.rico.rest.Biblioteca.model.Libro;
 import edu.rico.rest.Biblioteca.model.dto.LibroDTO;
 import edu.rico.rest.Biblioteca.service.interfaces.ILibroService;
@@ -28,9 +28,9 @@ import edu.rico.rest.Biblioteca.service.interfaces.ILibroService;
 public class LibroController {
 
     private final ILibroService libroService;
-    private final LibroMapper libroMapper;
+    private final IILibroMapper libroMapper;
 
-    public LibroController(ILibroService libroService, LibroMapper libroMapper) {
+    public LibroController(ILibroService libroService, ILibroMapper libroMapper) {
         this.libroService = libroService;
         this.libroMapper = libroMapper;
     }

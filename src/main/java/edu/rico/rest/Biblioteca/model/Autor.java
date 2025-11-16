@@ -1,10 +1,14 @@
 package edu.rico.rest.Biblioteca.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,6 +26,9 @@ public class Autor {
     private String apellido2;
     @Column(length=50, nullable = false)
     private String nacionalidad;
+
+    @ManyToMany(mappedBy = "autores")
+    private Set<Libro> libros = new HashSet<>();
 
     public Autor(){}
 
@@ -71,6 +78,14 @@ public class Autor {
 
     public void setNacionalidad(String nacionalidad) {
         this.nacionalidad = nacionalidad;
+    }
+
+    public Set<Libro> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(Set<Libro> libros) {
+        this.libros = libros;
     }
 
     @Override

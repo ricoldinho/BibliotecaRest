@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.rico.rest.Biblioteca.mapper.LibroMapper;
+import edu.rico.rest.Biblioteca.mapper.ILibroMapper;
 import edu.rico.rest.Biblioteca.model.Libro;
 import edu.rico.rest.Biblioteca.model.dto.LibroDTO;
 import edu.rico.rest.Biblioteca.repository.LibroRepository;
@@ -16,9 +16,9 @@ import edu.rico.rest.Biblioteca.service.interfaces.ILibroService;
 public class LibroServiceImpl implements ILibroService {
 
     private final LibroRepository libroRepository;
-    private final LibroMapper libroMapper;
+    private final IILibroMapper libroMapper;
 
-    public LibroServiceImpl(LibroRepository libroRepository, LibroMapper libroMapper) {
+    public LibroServiceImpl(LibroRepository libroRepository, ILibroMapper libroMapper) {
         this.libroRepository = libroRepository;
         this.libroMapper = libroMapper;
     }

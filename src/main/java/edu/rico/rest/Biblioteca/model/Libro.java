@@ -1,6 +1,8 @@
 package edu.rico.rest.Biblioteca.model;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import edu.rico.rest.Biblioteca.model.vo.Isbn;
 import edu.rico.rest.Biblioteca.model.vo.Money;
@@ -12,6 +14,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,8 +30,13 @@ public class Libro {
     @Column(nullable = false, length = 255)
     private String titulo;
 
-    @Column(nullable = false, length = 100)
-    private String autor;
+    @ManyToMany
+    @JoinTable(
+        name = "libro_autores",
+        joinColumns = @JoinColumn(name = "libro_id"),
+        inverseJoinColumns = @JoinColumn(name = "autor_id")
+    )
+    private Set<Autor> autores = new HashSet<>();
 
     @Embedded
     @AttributeOverride(name = "value", column = @Column(name = "isbn", nullable = false, unique = true, length = 20))
@@ -48,9 +58,9 @@ public class Libro {
     public Libro() {
     }
 
-    public Libro(String titulo, String autor, Isbn isbn, Money precio, String editorial, LocalDate fechaLanzamiento) {
+    public Libro(String titulo, Set<Autor> autores, Isbn isbn, Money precio, String editorial, LocalDate fechaLanzamiento) {
         this.titulo = titulo;
-        this.autor = autor;
+        this.autores = autores;
         this.isbn = isbn;
         this.precio = precio;
         this.editorial = editorial;
@@ -73,12 +83,12 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    public String getAutor() {
-        return autor;
+    public Set<Autor> getAutores() {
+        return autores;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
+    public void setAutores(Set<Autor> autores) {
+        this.autores = autores;
     }
 
     public Isbn getIsbn() {
@@ -115,7 +125,7 @@ public class Libro {
 
     @Override
     public String toString() {
-        return "Libro [id=" + id + ", titulo=" + titulo + ", autor=" + autor + ", isbn=" + isbn.getValue() + ", precio=" + precio
+        return "Libro [id=" + id + ", titulo=" + titulo + ", autores=" + autores + ", isbn=" + isbn.getValue() + ", precio=" + precio
                 + ", editorial=" + editorial + ", fechaLanzamiento=" + fechaLanzamiento + "]";
     }
 }
