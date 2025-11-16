@@ -8,8 +8,8 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public final class Money {
 
-    private final BigDecimal amount;
-    private final String currency;
+    private BigDecimal amount;
+    private String currency;
 
     public Money(BigDecimal amount, String currency) {
         if (amount == null || amount.scale() > 2) {

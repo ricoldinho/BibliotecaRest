@@ -11,7 +11,7 @@ public final class Isbn {
     private static final Pattern ISBN_PATTERN = Pattern.compile(
             "^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$");
 
-    private final String value;
+    private String value;
 
     public Isbn(String value) {
         if (value == null || !ISBN_PATTERN.matcher(value).matches()) {
