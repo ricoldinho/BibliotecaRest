@@ -1,95 +1,3 @@
--- Insertar autores primero
-INSERT INTO autores (nombre, apellido1, apellido2, nacionalidad) VALUES 
-('Miguel', 'de Cervantes', NULL, 'española'),
-('Gabriel', 'García Márquez', NULL, 'colombiana'),
-('George', 'Orwell', NULL, 'británica'),
-('Aldous', 'Huxley', NULL, 'británica'),
-('Jane', 'Austen', NULL, 'británica'),
-('Harper', 'Lee', NULL, 'estadounidense'),
-('F. Scott', 'Fitzgerald', NULL, 'estadounidense'),
-('Herman', 'Melville', NULL, 'estadounidense'),
-('León', 'Tolstói', NULL, 'rusa'),
-('Fyodor', 'Dostoevsky', NULL, 'rusa'),
-('Homero', 'Epicus', NULL, 'griega'),
-('William', 'Shakespeare', NULL, 'británica'),
-('Antoine', 'de Saint-Exupéry', NULL, 'francesa'),
-('Vladimir', 'Nabokov', NULL, 'rusa'),
-('James', 'Joyce', NULL, 'irlandesa'),
-('Marcel', 'Proust', NULL, 'francesa'),
-('Albert', 'Camus', NULL, 'francesa'),
-('Franz', 'Kafka', NULL, 'checa'),
-('John', 'Steinbeck', NULL, 'estadounidense'),
-('J.D.', 'Salinger', NULL, 'estadounidense'),
-('J.R.R.', 'Tolkien', NULL, 'británica'),
-('Frank', 'Herbert', NULL, 'estadounidense'),
-('Isaac', 'Asimov', NULL, 'rusa-estadounidense'),
-('George R.R.', 'Martin', NULL, 'estadounidense'),
-('J.K.', 'Rowling', NULL, 'británica'),
-('Patrick', 'Rothfuss', NULL, 'estadounidense'),
-('Ray', 'Bradbury', NULL, 'estadounidense'),
-('Philip K.', 'Dick', NULL, 'estadounidense'),
-('William', 'Gibson', NULL, 'estadounidense'),
-('Robert', 'Jordan', NULL, 'estadounidense'),
-('Dan', 'Simmons', NULL, 'estadounidense'),
-('Terry', 'Pratchett', NULL, 'británica'),
-('Ursula K.', 'Le Guin', NULL, 'estadounidense'),
-('Arthur C.', 'Clarke', NULL, 'británica'),
-('Mary', 'Shelley', NULL, 'británica'),
-('Bram', 'Stoker', NULL, 'irlandesa'),
-('Juan Gómez', 'Jurado', NULL, 'española'),
-('Carlos Ruiz', 'Zafón', NULL, 'española'),
-('Dan', 'Brown', NULL, 'estadounidense'),
-('Yuval Noah', 'Harari', NULL, 'israelí'),
-('James', 'Clear', NULL, 'estadounidense'),
-('Gillian', 'Flynn', NULL, 'estadounidense'),
-('Paula', 'Hawkins', NULL, 'británica'),
-('Ken', 'Follett', NULL, 'británica'),
-('Fernando', 'Aramburu', NULL, 'española'),
-('Paulo', 'Coelho', NULL, 'portuguesa'),
-('Khaled', 'Hosseini', NULL, 'afgana'),
-('Ildefonso', 'Falcones', NULL, 'española'),
-('María', 'Dueñas', NULL, 'española'),
-('Delia', 'Owens', NULL, 'estadounidense'),
-('Stieg', 'Larsson', NULL, 'sueca'),
-('Mark', 'Manson', NULL, 'estadounidense'),
-('Neil', 'Gaiman', NULL, 'británica'),
-('Cormac', 'McCarthy', NULL, 'estadounidense'),
-('Ian', 'McEwan', NULL, 'británica'),
-('Yann', 'Martel', NULL, 'canadiense'),
-('Andy', 'Weir', NULL, 'estadounidense'),
-('Celeste', 'Ng', NULL, 'estadounidense'),
-('Alex', 'Michaelides', NULL, 'británica-chipriota'),
-('Sally', 'Rooney', NULL, 'irlandesa'),
-('Kazuo', 'Ishiguro', NULL, 'británica'),
-('Bonnie', 'Garmus', NULL, 'estadounidense'),
-('Matt', 'Haig', NULL, 'británica'),
-('Madeline', 'Miller', NULL, 'estadounidense'),
-('Julio', 'Cortázar', NULL, 'argentina'),
-('Jorge Luis', 'Borges', NULL, 'argentina'),
-('Juan', 'Rulfo', NULL, 'mexicana'),
-('Isabel', 'Allende', NULL, 'chilena'),
-('Gustave', 'Flaubert', NULL, 'francesa'),
-('Charles', 'Dickens', NULL, 'británica'),
-('Emily', 'Brontë', NULL, 'británica'),
-('Charlotte', 'Brontë', NULL, 'británica'),
-('Joseph', 'Conrad', NULL, 'polaca'),
-('Ernest', 'Hemingway', NULL, 'estadounidense'),
-('Jack', 'Kerouac', NULL, 'estadounidense'),
-('Kurt', 'Vonnegut', NULL, 'estadounidense'),
-('William', 'Faulkner', NULL, 'estadounidense'),
-('Richard', 'Dawkins', NULL, 'británica'),
-('Stephen', 'Hawking', NULL, 'británica'),
-('Daniel', 'Kahneman', NULL, 'israelí'),
-('Viktor', 'Frankl', NULL, 'austriaca'),
-('Carl', 'Sagan', NULL, 'estadounidense'),
-('Jordan B.', 'Peterson', NULL, 'canadiense'),
-('Eckhart', 'Tolle', NULL, 'canadiense'),
-('Jared', 'Diamond', NULL, 'estadounidense'),
-('Nassim Nicholas', 'Taleb', NULL, 'libanesa'),
-('manuel', 'rivas', NULL, 'española'),
-('fernando', 'trujillo', NULL, 'española');
-
--- Insertar libros sin la columna autor (ahora solo con autores_id)
 INSERT INTO libros (titulo, isbn, precio, moneda, editorial, fecha_lanzamiento) VALUES
 ('Don Quijote de la Mancha', '9788420412146', 24.95, 'EUR', 'Alfaguara', '1605-01-16'),
 ('Cien Años de Soledad', '9780307474728', 21.50, 'EUR', 'Sudamericana', '1967-05-30'),
@@ -188,198 +96,102 @@ INSERT INTO libros (titulo, isbn, precio, moneda, editorial, fecha_lanzamiento) 
 ('Armas, gérmenes y acero', '9780393317558', 19.99, 'USD', 'W. W. Norton', '1997-01-01'),
 ('El cisne negro', '9780812973815', 18.50, 'USD', 'Random House', '2007-04-17');
 
--- Crear relaciones muchos-a-muchos entre libros y autores
--- Asignamos los autores a los libros según el orden de inserción
-INSERT INTO libro_autores (libro_id, autor_id) VALUES
--- Don Quijote -> Miguel de Cervantes
-(1, 1),
--- Cien Años de Soledad -> Gabriel García Márquez
-(2, 2),
--- 1984 -> George Orwell
-(3, 3),
--- Un mundo feliz -> Aldous Huxley
-(4, 4),
--- Orgullo y Prejuicio -> Jane Austen
-(5, 5),
--- Matar un ruiseñor -> Harper Lee
-(6, 6),
--- El Gran Gatsby -> F. Scott Fitzgerald
-(7, 7),
--- Moby Dick -> Herman Melville
-(8, 8),
--- Guerra y Paz -> León Tolstói
-(9, 9),
--- Crimen y Castigo -> Fyodor Dostoevsky
-(10, 10),
--- La Odisea -> Homero
-(11, 11),
--- Hamlet -> William Shakespeare
-(12, 12),
--- El Principito -> Antoine de Saint-Exupéry
-(13, 13),
--- Lolita -> Vladimir Nabokov
-(14, 14),
--- Ulises -> James Joyce
-(15, 15),
--- En Busca del Tiempo Perdido -> Marcel Proust
-(16, 16),
--- El Extranjero -> Albert Camus
-(17, 17),
--- El Proceso -> Franz Kafka
-(18, 18),
--- Las uvas de la ira -> John Steinbeck
-(19, 19),
--- El guardián entre el centeno -> J.D. Salinger
-(20, 20),
--- El Señor de los Anillos: La Comunidad del Anillo -> J.R.R. Tolkien
-(21, 21),
--- El Hobbit -> J.R.R. Tolkien
-(22, 21),
--- Dune -> Frank Herbert
-(23, 22),
--- Fundación -> Isaac Asimov
-(24, 23),
--- Juego de Tronos -> George R.R. Martin
-(25, 24),
--- Harry Potter y la piedra filosofal -> J.K. Rowling
-(26, 25),
--- El nombre del viento -> Patrick Rothfuss
-(27, 26),
--- Crónicas Marcianas -> Ray Bradbury
-(28, 27),
--- ¿Sueñan los androides con ovejas eléctricas? -> Philip K. Dick
-(29, 28),
--- Neuromante -> William Gibson
-(30, 29),
--- El fin de la eternidad -> Isaac Asimov
-(31, 23),
--- Fahrenheit 451 -> Ray Bradbury
-(32, 27),
--- El Silmarillion -> J.R.R. Tolkien
-(33, 21),
--- La Rueda del Tiempo: El Ojo del Mundo -> Robert Jordan
-(34, 30),
--- Hyperion -> Dan Simmons
-(35, 31),
--- El color de la magia -> Terry Pratchett
-(36, 32),
--- La mano izquierda de la oscuridad -> Ursula K. Le Guin
-(37, 33),
--- 2001: Una odisea espacial -> Arthur C. Clarke
-(38, 34),
--- Frankenstein -> Mary Shelley
-(39, 35),
--- Drácula -> Bram Stoker
-(40, 36),
--- Reina Roja -> Juan Gómez Jurado
-(41, 37),
--- La Sombra del Viento -> Carlos Ruiz Zafón
-(42, 38),
--- El Código Da Vinci -> Dan Brown
-(43, 39),
--- Sapiens: De animales a dioses -> Yuval Noah Harari
-(44, 40),
--- Hábitos Atómicos -> James Clear
-(45, 41),
--- Perdida (Gone Girl) -> Gillian Flynn
-(46, 42),
--- La chica del tren -> Paula Hawkins
-(47, 43),
--- Los pilares de la Tierra -> Ken Follett
-(48, 44),
--- Patria -> Fernando Aramburu
-(49, 45),
--- El Alquimista -> Paulo Coelho
-(50, 46),
--- Cometas en el cielo -> Khaled Hosseini
-(51, 47),
--- La catedral del mar -> Ildefonso Falcones
-(52, 48),
--- El tiempo entre costuras -> María Dueñas
-(53, 49),
--- Donde cantan los cangrejos -> Delia Owens
-(54, 50),
--- Los hombres que no amaban a las mujeres -> Stieg Larsson
-(55, 51),
--- El sutil arte de que (casi) todo te importe una mi*rda -> Mark Manson
-(56, 52),
--- American Gods -> Neil Gaiman
-(57, 53),
--- La carretera -> Cormac McCarthy
-(58, 54),
--- Expiación -> Ian McEwan
-(59, 55),
--- La vida de Pi -> Yann Martel
-(60, 56),
--- El marciano -> Andy Weir
-(61, 57),
--- Todo lo que no te conté -> Celeste Ng
-(62, 58),
--- La paciente silenciosa -> Alex Michaelides
-(63, 59),
--- Gente normal -> Sally Rooney
-(64, 60),
--- El Proyecto Hail Mary -> Andy Weir
-(65, 57),
--- Klara y el Sol -> Kazuo Ishiguro
-(66, 61),
--- Lecciones de química -> Bonnie Garmus
-(67, 62),
--- La biblioteca de la medianoche -> Matt Haig
-(68, 63),
--- Circe -> Madeline Miller
-(69, 64),
--- Rayuela -> Julio Cortázar
-(70, 65),
--- Ficciones -> Jorge Luis Borges
-(71, 66),
--- Pedro Páramo -> Juan Rulfo
-(72, 67),
--- La casa de los espíritus -> Isabel Allende
-(73, 68),
--- Anna Karenina -> León Tolstói
-(74, 9),
--- Madame Bovary -> Gustave Flaubert
-(75, 69),
--- Los hermanos Karamazov -> Fyodor Dostoevsky
-(76, 10),
--- Grandes Esperanzas -> Charles Dickens
-(77, 70),
--- Cumbres Borrascosas -> Emily Brontë
-(78, 71),
--- Jane Eyre -> Charlotte Brontë
-(79, 72),
--- El corazón de las tinieblas -> Joseph Conrad
-(80, 73),
--- Por quién doblan las campanas -> Ernest Hemingway
-(81, 74),
--- Al este del Edén -> John Steinbeck
-(82, 19),
--- En el camino -> Jack Kerouac
-(83, 75),
--- Matadero cinco -> Kurt Vonnegut
-(84, 76),
--- El ruido y la furia -> William Faulkner
-(85, 77),
--- Meridiano de sangre -> Cormac McCarthy
-(86, 54),
--- El gen egoísta -> Richard Dawkins
-(87, 78),
--- Breve historia del tiempo -> Stephen Hawking
-(88, 79),
--- Pensar rápido, pensar despacio -> Daniel Kahneman
-(89, 80),
--- El hombre en busca de sentido -> Viktor Frankl
-(90, 81),
--- Cosmos -> Carl Sagan
-(91, 82),
--- 12 Reglas para Vivir -> Jordan B. Peterson
-(92, 83),
--- Homo Deus: Breve historia del mañana -> Yuval Noah Harari
-(93, 40),
--- El poder del ahora -> Eckhart Tolle
-(94, 84),
--- Armas, gérmenes y acero -> Jared Diamond
-(95, 85),
--- El cisne negro -> Nassim Nicholas Taleb
-(96, 86);
+INSERT INTO autores (nombre, apellido1, apellido2, nacionalidad, dni, fecha_nacimiento) VALUES 
+('Miguel', 'de Cervantes', 'Saavedra', 'Española', '10000001A', '1547-09-29'),
+('Gabriel', 'García', 'Márquez', 'Colombiana', '10000002B', '1927-03-06'),
+('Juan', 'Gómez-Jurado', NULL, 'Española', '10000003C', '1977-12-16'),
+('Carlos', 'Ruiz', 'Zafón', 'Española', '10000004D', '1964-09-25'),
+('Fernando', 'Aramburu', NULL, 'Española', '10000005E', '1959-01-01'),
+('Paulo', 'Coelho', NULL, 'Brasileña', '10000006F', '1947-08-24'),
+('Ildefonso', 'Falcones', NULL, 'Española', '10000007G', '1959-01-01'),
+('María', 'Dueñas', NULL, 'Española', '10000008H', '1964-01-01'),
+('Julio', 'Cortázar', NULL, 'Argentina', '10000009I', '1914-08-26'),
+('Jorge Luis', 'Borges', NULL, 'Argentina', '10000010J', '1899-08-24'),
+('Juan', 'Rulfo', NULL, 'Mexicana', '10000011K', '1917-05-16'),
+('Isabel', 'Allende', NULL, 'Chilena', '10000012L', '1942-08-02'),
+('León', 'Tolstói', NULL, 'Rusa', '10000013M', '1828-09-09'),
+('Fyodor', 'Dostoevsky', NULL, 'Rusa', '10000014N', '1821-11-11'),
+('Vladimir', 'Nabokov', NULL, 'Rusa', '10000015O', '1899-04-22'),
+('Antoine', 'de Saint-Exupéry', NULL, 'Francesa', '10000016P', '1900-06-29'),
+('Marcel', 'Proust', NULL, 'Francesa', '10000017Q', '1871-07-10'),
+('Albert', 'Camus', NULL, 'Francesa', '10000018R', '1913-11-07'),
+('Franz', 'Kafka', NULL, 'Checa', '10000019S', '1883-07-03'),
+('Gustave', 'Flaubert', NULL, 'Francesa', '10000020T', '1821-12-12'),
+('Homero', "", NULL, 'Griega', '10000021U', '0800-01-01'), -- Fecha simbólica antigua
+('Viktor', 'Frankl', NULL, 'Austriaca', '10000022V', '1905-03-26'),
+('Stieg', 'Larsson', NULL, 'Sueca', '10000023W', '1954-08-15'),
+('Herman', 'Melville', NULL, 'Estadounidense', '10000024X', '1819-08-01'),
+('George', 'Orwell', NULL, 'Británica', '10000025Y', '1903-06-25'),
+('Aldous', 'Huxley', NULL, 'Británica', '10000026Z', '1894-07-26'),
+('Jane', 'Austen', NULL, 'Británica', '10000027A', '1775-12-16'),
+('William', 'Shakespeare', NULL, 'Británica', '10000028B', '1564-04-23'),
+('James', 'Joyce', NULL, 'Irlandesa', '10000029C', '1882-02-02'),
+('J.R.R.', 'Tolkien', NULL, 'Británica', '10000030D', '1892-01-03'),
+('J.K.', 'Rowling', NULL, 'Británica', '10000031E', '1965-07-31'),
+('Terry', 'Pratchett', NULL, 'Británica', '10000032F', '1948-04-28'),
+('Arthur C.', 'Clarke', NULL, 'Británica', '10000033G', '1917-12-16'),
+('Mary', 'Shelley', NULL, 'Británica', '10000034H', '1797-08-30'),
+('Bram', 'Stoker', NULL, 'Irlandesa', '10000035I', '1847-11-08'),
+('Paula', 'Hawkins', NULL, 'Británica', '10000036J', '1972-08-26'),
+('Ken', 'Follett', NULL, 'Británica', '10000037K', '1949-06-05'),
+('Neil', 'Gaiman', NULL, 'Británica', '10000038L', '1960-11-10'),
+('Ian', 'McEwan', NULL, 'Británica', '10000039M', '1948-06-21'),
+('Sally', 'Rooney', NULL, 'Irlandesa', '10000040N', '1991-02-20'),
+('Kazuo', 'Ishiguro', NULL, 'Británica', '10000041O', '1954-11-08'),
+('Matt', 'Haig', NULL, 'Británica', '10000042P', '1975-07-03'),
+('Charles', 'Dickens', NULL, 'Británica', '10000043Q', '1812-02-07'),
+('Emily', 'Brontë', NULL, 'Británica', '10000044R', '1818-07-30'),
+('Charlotte', 'Brontë', NULL, 'Británica', '10000045S', '1816-04-21'),
+('Joseph', 'Conrad', NULL, 'Británica', '10000046T', '1857-12-03'),
+('Richard', 'Dawkins', NULL, 'Británica', '10000047U', '1941-03-26'),
+('Stephen', 'Hawking', NULL, 'Británica', '10000048V', '1942-01-08'),
+('Alex', 'Michaelides', NULL, 'Chipriota', '10000049W', '1977-09-04'),
+('Harper', 'Lee', NULL, 'Estadounidense', '10000050X', '1926-04-28'),
+('F. Scott', 'Fitzgerald', NULL, 'Estadounidense', '10000051Y', '1896-09-24'),
+('John', 'Steinbeck', NULL, 'Estadounidense', '10000052Z', '1902-02-27'),
+('J.D.', 'Salinger', NULL, 'Estadounidense', '10000053A', '1919-01-01'),
+('Frank', 'Herbert', NULL, 'Estadounidense', '10000054B', '1920-10-08'),
+('Isaac', 'Asimov', NULL, 'Estadounidense', '10000055C', '1920-01-02'),
+('George R.R.', 'Martin', NULL, 'Estadounidense', '10000056D', '1948-09-20'),
+('Patrick', 'Rothfuss', NULL, 'Estadounidense', '10000057E', '1973-06-06'),
+('Ray', 'Bradbury', NULL, 'Estadounidense', '10000058F', '1920-08-22'),
+('Philip K.', 'Dick', NULL, 'Estadounidense', '10000059G', '1928-12-16'),
+('William', 'Gibson', NULL, 'Estadounidense', '10000060H', '1948-03-17'),
+('Robert', 'Jordan', NULL, 'Estadounidense', '10000061I', '1948-10-17'),
+('Dan', 'Simmons', NULL, 'Estadounidense', '10000062J', '1948-04-04'),
+('Ursula K.', 'Le Guin', NULL, 'Estadounidense', '10000063K', '1929-10-21'),
+('Dan', 'Brown', NULL, 'Estadounidense', '10000064L', '1964-06-22'),
+('James', 'Clear', NULL, 'Estadounidense', '10000065M', '1986-01-22'),
+('Gillian', 'Flynn', NULL, 'Estadounidense', '10000066N', '1971-02-24'),
+('Khaled', 'Hosseini', NULL, 'Estadounidense', '10000067O', '1965-03-04'),
+('Delia', 'Owens', NULL, 'Estadounidense', '10000068P', '1949-01-01'),
+('Mark', 'Manson', NULL, 'Estadounidense', '10000069Q', '1984-03-09'),
+('Cormac', 'McCarthy', NULL, 'Estadounidense', '10000070R', '1933-07-20'),
+('Yann', 'Martel', NULL, 'Canadiense', '10000071S', '1963-06-25'),
+('Andy', 'Weir', NULL, 'Estadounidense', '10000072T', '1972-06-16'),
+('Celeste', 'Ng', NULL, 'Estadounidense', '10000073U', '1980-07-30'),
+('Bonnie', 'Garmus', NULL, 'Estadounidense', '10000074V', '1957-01-01'),
+('Madeline', 'Miller', NULL, 'Estadounidense', '10000075W', '1978-07-24'),
+('Ernest', 'Hemingway', NULL, 'Estadounidense', '10000076X', '1899-07-21'),
+('Jack', 'Kerouac', NULL, 'Estadounidense', '10000077Y', '1922-03-12'),
+('Kurt', 'Vonnegut', NULL, 'Estadounidense', '10000078Z', '1922-11-11'),
+('William', 'Faulkner', NULL, 'Estadounidense', '10000079A', '1897-09-25'),
+('Carl', 'Sagan', NULL, 'Estadounidense', '10000080B', '1934-11-09'),
+('Jared', 'Diamond', NULL, 'Estadounidense', '10000081C', '1937-09-10'),
+('Nassim Nicholas', 'Taleb', NULL, 'Estadounidense', '10000082D', '1960-01-01'),
+('Yuval Noah', 'Harari', NULL, 'Israelí', '10000083E', '1976-02-24'),
+('Daniel', 'Kahneman', NULL, 'Israelí-Estadounidense', '10000084F', '1934-03-05'),
+('Jordan B.', 'Peterson', NULL, 'Canadiense', '10000085G', '1962-06-12'),
+('Eckhart', 'Tolle', NULL, 'Alemana', '10000086H', '1948-02-16');
+
+INSERT INTO libros_autores (libro_id, autor_id) VALUES
+(1, 1), (2, 2), (3, 25), (4, 26), (5, 27), (6, 50), (7, 51), (8, 24), (9, 13), (10, 14),
+(11, 21), (12, 28), (13, 16), (14, 15), (15, 29), (16, 17), (17, 18), (18, 19), (19, 52), (20, 53),
+(21, 30), (22, 30), (23, 54), (24, 55), (25, 56), (26, 31), (27, 57), (28, 58), (29, 59), (30, 60),
+(31, 55), (32, 58), (33, 30), (34, 61), (35, 62), (36, 32), (37, 63), (38, 33), (39, 34), (40, 35),
+(41, 3), (42, 4), (43, 64), (44, 83), (45, 65), (46, 66), (47, 36), (48, 37), (49, 5), (50, 6),
+(51, 67), (52, 7), (53, 8), (54, 68), (55, 23), (56, 69), (57, 38), (58, 70), (59, 39), (60, 71),
+(61, 72), (62, 73), (63, 49), (64, 40), (65, 72), (66, 41), (67, 74), (68, 42), (69, 75), (70, 9),
+(71, 10), (72, 11), (73, 12), (74, 13), (75, 20), (76, 14), (77, 43), (78, 44), (79, 45), (80, 46),
+(81, 76), (82, 52), (83, 77), (84, 78), (85, 79), (86, 70), (87, 47), (88, 48), (89, 84), (90, 22),
+(91, 80), (92, 85), (93, 83), (94, 86), (95, 81), (96, 82);

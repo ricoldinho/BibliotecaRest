@@ -32,7 +32,7 @@ public class Libro {
 
     @ManyToMany
     @JoinTable(
-        name = "libro_autores",
+        name = "libros_autores",
         joinColumns = @JoinColumn(name = "libro_id"),
         inverseJoinColumns = @JoinColumn(name = "autor_id")
     )
